@@ -165,7 +165,7 @@ function arrayPartition(arr, startIdx = 0, endIdx = arr.length - 1) {
 // }
 
 
-console.log(quickSort([1, 5, 2, 8, 3, 4]));
+// console.log(quickSort([1, 5, 2, 8, 3, 4]));
 // // should log [1, 2, 3, 4, 5, 8]
 
 
@@ -180,4 +180,68 @@ console.log(quickSort([1, 5, 2, 8, 3, 4]));
 // console.log( newNums );
 
 
+/**
+ * takes in two SORTED arrays
+ * returns a new SORTED array
+ * with the largest occurrence of each distinct number
+ * BONUS: deduplicate the output
+ */
 
+
+// function intersectSortedArrays(arr1, arr2) {
+//   let pointer1 = 0;
+//   let pointer2 = 0;
+//   let newarr = [];
+//   while(){
+//       if (pointer1<pointer2){
+//           newarr.push(pointer1);
+//       }
+//       else {newarr.push(pointer2);}
+//   }
+//   return  arr1.filter(function(n) { return arr2.indexOf(n) !== -1;});
+// }
+
+
+
+
+
+// function intersectSortedArraysDedupe(arr1, arr2) {
+//   // your code
+// }
+
+// console.log(intersectSortedArraysDedupe([1, 2, 2], [2, 3, 3]));
+// // should log [1, 2, 3]
+
+
+
+function intersectSortedArrays(arr1, arr2) {
+
+  var x=0,
+      y=0,
+      ret=[];
+
+  while (x<arr1.length && y<arr2.length) {
+
+    //intersection!
+    if (arr1[x++] === arr2[y++]){
+      ret.push(arr1[x]);
+      x++;
+      y++;
+
+    //if current element of `a` is smaller than current element of `b`
+    //then loop through `a` until we found an element that is equal or greater
+    //than the current element of `b`.
+    } else if (arr1[x]<arr2[y]){
+      x++;
+
+    //same but for `b`
+    } else {
+      y++;
+    }
+    ret.push(x,y);
+  }
+
+  return ret;
+}
+console.log(intersectSortedArrays([1, 2, 2], [2, 3, 3]));
+ 
