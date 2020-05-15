@@ -130,52 +130,52 @@
  * and call the function recursively as needed
  */
 
-function arrayPartition(arr, startIdx = 0, endIdx = arr.length - 1) {
-  let pivotIdx = Math.floor(Math.random() * (endIdx + 1));
-  let pivot = arr[pivotIdx];
+// function arrayPartition(arr, startIdx = 0, endIdx = arr.length - 1) {
+//   let pivotIdx = Math.floor(Math.random() * (endIdx + 1));
+//   let pivot = arr[pivotIdx];
 
-  while (startIdx < endIdx) {
-    while(arr[startIdx] < pivot){
-      startIdx++;
-    }
-    while (arr[endIdx] > pivot){
-      endIdx--;
-    }
-    if (startIdx < endIdx) {
-      let temp = arr[startIdx];
-      arr[startIdx] = arr[endIdx];
-      arr[endIdx] = temp;
-    }
-  }
-  return startIdx;
-}
-
-// function quickSort(arr, startIdx = 0, endIdx = arr.length - 1) {
-//   var runner;
-//   if (arr.length > 1) {
-//     runner = arrayPartition(arr, startIdx, endIdx);
-//     if (startIdx < runner - 1) {
-//       quickSort(arr, startIdx, runner -1);
+//   while (startIdx < endIdx) {
+//     while(arr[startIdx] < pivot){
+//       startIdx++;
 //     }
-//     if (runner < endIdx) {
-//       quickSort(arr, runner, endIdx);
+//     while (arr[endIdx] > pivot){
+//       endIdx--;
+//     }
+//     if (startIdx < endIdx) {
+//       let temp = arr[startIdx];
+//       arr[startIdx] = arr[endIdx];
+//       arr[endIdx] = temp;
 //     }
 //   }
-//   return arr;
+//   return startIdx;
 // }
 
+// // function quickSort(arr, startIdx = 0, endIdx = arr.length - 1) {
+// //   var runner;
+// //   if (arr.length > 1) {
+// //     runner = arrayPartition(arr, startIdx, endIdx);
+// //     if (startIdx < runner - 1) {
+// //       quickSort(arr, startIdx, runner -1);
+// //     }
+// //     if (runner < endIdx) {
+// //       quickSort(arr, runner, endIdx);
+// //     }
+// //   }
+// //   return arr;
+// // }
 
-// console.log(quickSort([1, 5, 2, 8, 3, 4]));
-// // should log [1, 2, 3, 4, 5, 8]
+
+// // console.log(quickSort([1, 5, 2, 8, 3, 4]));
+// // // should log [1, 2, 3, 4, 5, 8]
 
 
-// const nums = [1,2,3,4,5];
+// // const nums = [1,2,3,4,5];
 
-// function double(num) {
-//   return num * 2;
-// }
+// // function double(num) {
+// // //   return num * 2;
+// // // }
 
-// const newNums = nums.map( double );
+// // // const newNums = nums.map( double );
 
 // console.log( newNums );
 
@@ -214,34 +214,51 @@ function arrayPartition(arr, startIdx = 0, endIdx = arr.length - 1) {
 
 
 
-function intersectSortedArrays(arr1, arr2) {
+// function intersectSortedArrays(arr1, arr2) {
 
-  var x=0,
-      y=0,
-      ret=[];
+//   var x=0,
+//       y=0,
+//       ret=[];
 
-  while (x<arr1.length && y<arr2.length) {
+//   while (x<arr1.length && y<arr2.length) {
 
-    //intersection!
-    if (arr1[x++] === arr2[y++]){
-      ret.push(arr1[x]);
-      x++;
-      y++;
+//     //intersection!
+//     if (arr1[x++] === arr2[y++]){
+//       ret.push(arr1[x]);
+//       x++;
+//       y++;
 
-    //if current element of `a` is smaller than current element of `b`
-    //then loop through `a` until we found an element that is equal or greater
-    //than the current element of `b`.
-    } else if (arr1[x]<arr2[y]){
-      x++;
+//     //if current element of `a` is smaller than current element of `b`
+//     //then loop through `a` until we found an element that is equal or greater
+//     //than the current element of `b`.
+//     } else if (arr1[x]<arr2[y]){
+//       x++;
 
-    //same but for `b`
-    } else {
-      y++;
+//     //same but for `b`
+//     } else {
+//       y++;
+//     }
+//     ret.push(x,y);
+//   }
+
+//   return ret;
+// }
+// console.log(intersectSortedArrays([1, 2, 2], [2, 3, 3]));
+ 
+function disjunctiveUnion(arr1, arr2) {
+  let arr3 = [];
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr2.indexOf(arr1[i]) == -1) {
+        arr3.push(arr1[i]);
+      }
     }
-    ret.push(x,y);
+    return arr3;
   }
 
-  return ret;
-}
-console.log(intersectSortedArrays([1, 2, 2], [2, 3, 3]));
+  console.log(disjunctiveUnion([1, 2], [1, 2]));
+  console.log("-------****----------")
+  console.log(disjunctiveUnion([1, 2, 3], [1, 2]));
+  console.log("-------****----------")
+
+
  
